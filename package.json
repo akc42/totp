@@ -1,0 +1,24 @@
+{
+  "name": "@akc42/totp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Simple functions to support Time based One Time Passwords compatible with Google Authenticator (and others)",
+  "main": "./totp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akc42/totp.git"
+  },
+  "keywords": [
+    "utilities",
+    "totp"
+  ],
+  "author": "Alan Chandler",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/akc42/totp/issues"
+  },
+  "homepage": "https://github.com/akc42/totp#readme"
+}
