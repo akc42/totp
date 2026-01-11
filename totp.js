@@ -127,7 +127,7 @@ const base32ToHex = (input) => {
 
 }
 
-export default {
+export {
   base32ToHex,
   hexToBase32,
   keyUri,
