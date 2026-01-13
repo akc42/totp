@@ -1,6 +1,6 @@
 {
   "name": "@akc42/totp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Simple functions to support Time based One Time Passwords compatible with Google Authenticator (and others)",
   "main": "./totp.js",

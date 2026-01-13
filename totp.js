@@ -18,7 +18,7 @@
     along with Totp.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
-    The purpose of this library is to check provide the ability to create and check time-based one time passwords.
+    The purpose of this library is to provide the ability to create and check time-based one time passwords.
     A key criteria is that is compatible with the results of the existing library - so that were these have already
     been set up they still work using google authenticator
 */
@@ -46,7 +46,14 @@ const keyUri = (key, name, app) => {
 const verify = (code, key) => {
   if (typeof code !== 'string' || code.length !== totpOptions.digits) return false;
   if (!/\d/g.test(code)) return false;
-  const counter = Math.floor(Math.floor(Date.now()/1000)/totpOptions.period);
+  return code = passCode(key,0);  //get the code at window 0
+}
+/*
+  key is hex secret key
+  periods is number of periods ahead to find the code for 0 = active now;
+*/
+const passCode = (key, periods) => {
+  const counter = Math.floor(Math.floor(Date.now()/1000)/totpOptions.period) + periods;
   const counterHex = counter.toString(16).padStart(16,'0');
   const counterBuf = Buffer.from(counterHex,'hex');
   const keyBuf = Buffer.from(key,'hex');
@@ -55,7 +62,7 @@ const verify = (code, key) => {
   const offset = digest[digest.length - 1] & 0xf;
   const binary = (digest[offset] & 0x7f) << 24 | (digest[offset + 1] & 0xff) << 16 | (digest[offset + 2] & 0xff) << 8 | digest[offset + 3] & 0xff;
   const token = ((binary % 1000000) + '').padStart(6,'0');
-  return token === code;
+  return token
 }
 
 const hexToBase32 = (input) => {
@@ -132,6 +139,7 @@ export {
   hexToBase32,
   keyUri,
   makeKey,
+  passCode,
   verify
 }
 
