@@ -46,7 +46,7 @@ const keyUri = (key, name, app) => {
 const verify = (code, key) => {
   if (typeof code !== 'string' || code.length !== totpOptions.digits) return false;
   if (!/\d/g.test(code)) return false;
-  return code = passCode(key,0);  //get the code at window 0
+  return code === passCode(key,0);  //get the code at window 0
 }
 /*
   key is hex secret key
